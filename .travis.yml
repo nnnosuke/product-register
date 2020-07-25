@@ -1,0 +1,15 @@
+sudo: required
+
+services: docker
+
+#コンテナを立ち上げる 
+#テスト用のサーバにコンテナを立ち上げる
+#ローカルと同じ環境を構築している
+brefore_install:
+  - docker-compose up --build -d
+
+#テスト環境の設定
+script:
+  - docker-compose exec --env 'RAILS_ENV=test' web rails db:create
+  - docker-compose exec --env 'RAILS_ENV=test' web rails db:migrate
+  - docker-compose exec --env 'RAILS_ENV=test' web rails test
