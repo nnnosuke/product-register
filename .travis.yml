@@ -5,7 +5,7 @@ services: docker
 #コンテナを立ち上げる 
 #テスト用のサーバにコンテナを立ち上げる
 #ローカルと同じ環境を構築している
-brefore_install:
+before_install:
   - docker-compose up --build -d
 
 #テスト環境の設定
